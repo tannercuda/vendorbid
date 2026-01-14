@@ -1,32 +1,58 @@
-import DemoCodes from "./components/DemoCodes";
+"use client";
 
-export default function Page(){
+import demo from "../data/demo.json";
+import Seed from "./components/Seed";
+import { LS_KEYS } from "./components/storage";
+
+function reset() {
+  if (typeof window === "undefined") return;
+  Object.values(LS_KEYS).forEach((k) => window.localStorage.removeItem(k));
+  window.location.reload();
+}
+
+export default function Page() {
   return (
     <div className="card">
-      <h1>POC: Builder + Subcontractor Bid Portal</h1>
+      <Seed />
+      <h1>POC v2 (Updated)</h1>
       <div className="hint">
-        This demo is designed so you can deploy to Vercel and test both sides immediately.
-        <br/>All data is stored in <b>your browser</b> (localStorage) so it behaves like a real app without needing a database.
+        Updates: <b>one community code</b>, Builder setup for trades + templates, Builder-managed docs, vendor notes view, and Builder↔Vendor chat.
       </div>
+
       <div className="hr"></div>
+
       <div className="grid2">
-        <div className="card" style={{margin:0}}>
+        <div className="card" style={{ margin: 0 }}>
           <h2>Builder side</h2>
-          <div className="hint">Review bids, select vendors per trade, and see totals update (Selected vs Low).</div>
-          <div style={{marginTop:12}}>
-            <a className="btn good" href="/builder">Open Builder Portal →</a>
+          <div className="hint">Setup trades/templates/docs, review bids, select vendors, message vendors.</div>
+          <div className="row" style={{ marginTop: 12 }}>
+            <a className="btn good" href="/builder">Open Builder →</a>
+            <a className="btn secondary" href="/builder/setup">Setup →</a>
+            <a className="btn secondary" href="/builder/analysis">Bid Analysis →</a>
+          </div>
+          <div className="row" style={{ marginTop: 12 }}>
+            <span className="badge"><b>Builder code:</b>&nbsp;{demo.builderAccessCode}</span>
           </div>
         </div>
-        <div className="card" style={{margin:0}}>
+
+        <div className="card" style={{ margin: 0 }}>
           <h2>Subcontractor side</h2>
-          <div className="hint">Redeem an invite code, view package docs, and submit a bid by trade & plan.</div>
-          <div style={{marginTop:12}}>
-            <a className="btn good" href="/sub">Open Subcontractor Portal →</a>
+          <div className="hint">Register using the community code, view docs, submit bids in required format, and chat with Builder.</div>
+          <div className="row" style={{ marginTop: 12 }}>
+            <a className="btn good" href="/sub">Open Sub →</a>
+          </div>
+          <div className="row" style={{ marginTop: 12 }}>
+            <span className="badge"><b>Community code:</b>&nbsp;{demo.communityCode}</span>
           </div>
         </div>
       </div>
+
       <div className="hr"></div>
-      <DemoCodes />
+
+      <div className="row" style={{ justifyContent: "space-between" }}>
+        <div className="hint"><b>Demo reset:</b> clears bids, templates, docs, selections, and chat.</div>
+        <button className="btn secondary" onClick={reset}>Reset demo data</button>
+      </div>
     </div>
-  )
+  );
 }
