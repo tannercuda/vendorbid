@@ -1,0 +1,6 @@
+
+body { font-family: Arial, sans-serif; background:#0b0b0b; color:#fff; margin:0; }
+.card { background:#111; border-radius:12px; padding:20px; margin:20px; }
+.btn { padding:8px 12px; border-radius:8px; border:none; cursor:pointer; }
+.good { background:#22c55e; }
+.secondary { background:#334155; color:white; }

@@ -1,0 +1,32 @@
+{
+  "communityId": "rm-poc",
+  "communityName": "Rancho Mirage (POC)",
+  "communityCode": "RANCHO123",
+  "builderAccessCode": "BUILDER123",
+  "plans": [
+    {
+      "id": "plan1",
+      "name": "Plan A",
+      "sqft": 1800
+    },
+    {
+      "id": "plan2",
+      "name": "Plan B",
+      "sqft": 2100
+    }
+  ],
+  "tradeCatalog": [
+    {
+      "id": "trade1",
+      "name": "Concrete"
+    },
+    {
+      "id": "trade2",
+      "name": "Framing"
+    },
+    {
+      "id": "trade3",
+      "name": "Plumbing"
+    }
+  ]
+}
